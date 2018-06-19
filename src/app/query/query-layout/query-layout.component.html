@@ -1,0 +1,23 @@
+
+
+<mat-drawer-container >
+    <mat-drawer mode="side" opened="true" style="width:20vw; border-right: 1px solid #ccc;">
+        <app-tables></app-tables>
+        <app-views></app-views>
+        <app-store-procedurs></app-store-procedurs>
+    </mat-drawer>
+    <mat-drawer-content >
+            <app-query-grid (outputEvent)="executeQuery($event)" style="z-index:1"></app-query-grid>
+           
+            <mat-card style="z-index:0">
+                <mat-card-subtitle>Results</mat-card-subtitle>
+                <mat-card-content>
+                    <app-query-results [inputData]="query" (outputEvent)="handleData($event)"></app-query-results>
+                </mat-card-content>
+                <button mat-raised-button color = "warn" style="position:absolute; top:0px; right:0px;" (click) = "selectFile()">Export to CSV</button>
+                <button mat-raised-button color = "warn" style="position:absolute; top:0px; right:140px;" (click) = "statsSummary()">Data Summary</button>
+            </mat-card>
+       
+       
+    </mat-drawer-content>
+  </mat-drawer-container>
